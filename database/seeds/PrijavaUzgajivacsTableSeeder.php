@@ -1,5 +1,7 @@
 <?php
 
+include_once 'CsvImporter.php';
+
 use Illuminate\Database\Seeder;
 
 class PrijavaUzgajivacsTableSeeder extends Seeder
@@ -11,6 +13,10 @@ class PrijavaUzgajivacsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $importer = new CsvImporter(app_path().'/../database/seeds/csv/prijave_uzgajivaca.csv',true,';');
+        while ($data = $importer->get(2000)) {
+          $csvTable = 'prijava_uzgajivacs';
+          DB::table($csvTable)->insert($data);
+        }
     }
 }

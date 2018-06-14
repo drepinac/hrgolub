@@ -15,5 +15,9 @@ class DatabaseSeeder extends Seeder
         $this->call(KlubsTableSeeder::class);
         $this->call(GolubsTableSeeder::class);
         $this->call(UzgajivacsTableSeeder::class);
+        $this->call(LetnaUdrugasTableSeeder::class);
+        $this->call(PrijavaUzgajivacsTableSeeder::class);
+        $this->call(PrijavaGolubsTableSeeder::class);
+        $this->call(ListasTableSeeder::class);
     }
 }

@@ -59,7 +59,7 @@ class CsvImporter {
             {
                 foreach ($this->header as $i => $heading_i)
                 {
-                    $row_new[$heading_i] = $row[$i];
+                    $row_new[$heading_i] = str_replace(",",".",$row[$i]);
                 }
                 $data[] = $row_new;
             }

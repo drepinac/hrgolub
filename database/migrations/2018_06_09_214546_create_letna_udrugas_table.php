@@ -14,8 +14,11 @@ class CreateLetnaUdrugasTable extends Migration
     public function up()
     {
         Schema::create('letna_udrugas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->string('luk',3)->primary();
+            $table->string('naziv',100);
+            $table->string('aktivnost',1)->nullable();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
     }
 

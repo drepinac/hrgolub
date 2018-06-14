@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrijavaGolubsTable extends Migration
+class CreatePrijavaUzgajivacsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreatePrijavaGolubsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prijava_golubs', function (Blueprint $table) {
-            $table->integer('sna_godina',  $autoIncrement = false);
+        Schema::create('prijava_uzgajivacs', function (Blueprint $table) {
             $table->integer('uac_id',  $autoIncrement = false);
-            $table->integer('gub_id',  $autoIncrement = false);
+            $table->string('kub_klub',3);
+            $table->integer('sna_godina', $autoIncrement = false);
+            $table->string('sifra_uzgajivaca',3)->nullable();
             $table->string('stari',1);
-            $table->primary(array('sna_godina','uac_id','gub_id','stari'));
+            $table->string('tipes',1)->nullable();
+            $table->primary(array('uac_id','sna_godina','stari'));
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
@@ -31,6 +33,6 @@ class CreatePrijavaGolubsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prijava_golubs');
+        Schema::dropIfExists('prijava_uzgajivacs');
     }
 }

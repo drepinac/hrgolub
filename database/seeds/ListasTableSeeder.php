@@ -1,5 +1,7 @@
 <?php
 
+include_once 'CsvImporter.php';
+
 use Illuminate\Database\Seeder;
 
 class ListasTableSeeder extends Seeder
@@ -11,6 +13,10 @@ class ListasTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $importer = new CsvImporter(app_path().'/../database/seeds/csv/liste.csv',true,';');
+        while ($data = $importer->get(500)) {
+          $csvTable = 'listas';
+          DB::table($csvTable)->insert($data);
+        }
     }
 }
