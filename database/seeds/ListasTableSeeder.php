@@ -13,10 +13,13 @@ class ListasTableSeeder extends Seeder
      */
     public function run()
     {
-        $importer = new CsvImporter(app_path().'/../database/seeds/csv/liste.csv',true,';');
-        while ($data = $importer->get(500)) {
+        $brojac = 0;
+        $importer = new CsvImporter(app_path().'/../database/seeds/csv/liste1993.csv',true,';');
+        while ($data = $importer->get(1)) {
           $csvTable = 'listas';
           DB::table($csvTable)->insert($data);
+//          $brojac++;
+//          echo $brojac.'<br>';
         }
     }
 }
