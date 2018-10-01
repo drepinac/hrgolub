@@ -13,13 +13,15 @@ class ListasTableSeeder extends Seeder
      */
     public function run()
     {
-        $brojac = 0;
-        $importer = new CsvImporter(app_path().'/../database/seeds/csv/liste1993.csv',true,';');
-        while ($data = $importer->get(1)) {
+//        $brojac = 0;
+//        $importer = new CsvImporter(app_path().'/../database/seeds/csv/liste.csv',true,';');
+//        while ($data = $importer->get(1)) {
           $csvTable = 'listas';
-          DB::table($csvTable)->insert($data);
+//          DB::table($csvTable)->insert($data);
+//          
+          DB::statement('LOAD DATA LOCAL INFILE "/../database/seeds/csv/liste.csv" INTO TABLE hrgolub.listas CHARACTER SET "utf8" FIELDS TERMINATED BY ";" ENCLOSED BY "\"" LINES TERMINATED BY "\r\n"');
 //          $brojac++;
 //          echo $brojac.'<br>';
-        }
+//        }
     }
 }

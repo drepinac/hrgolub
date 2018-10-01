@@ -14,8 +14,11 @@ class CreatePrijavaKlubsTable extends Migration
     public function up()
     {
         Schema::create('prijava_klubs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('sna_godina',  $autoIncrement = false);
+            $table->string('kub_klub',2);
+            $table->string('luk_luk',3);
+            $table->string('stari',1);
+            $table->primary(array('sna_godina','kub_klub','luk_luk','stari'));
         });
     }
 
